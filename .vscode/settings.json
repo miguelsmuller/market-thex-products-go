@@ -1,0 +1,15 @@
+{
+  // "editor.tabCompletion": "on",
+  // "go.installDependenciesWhenBuilding": true,
+  // "go.formatTool": "gofmt",
+  // "go.useLanguageServer": true,
+  // "go.gopath": "./src",
+  "cSpell.words": [
+    "dEnvVars",
+    "godotenv",
+    "gofiber",
+    "gorm",
+    "joho",
+    "thex"
+  ],
+}
