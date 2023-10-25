@@ -68,3 +68,51 @@ Aqui estão alguns exemplos de uso para a API de Produtos:
     - Faça uma solicitação GET para verificar a saúde do sistema.
 
 Certifique-se de usar as rotas apropriadas para realizar as operações desejadas na API de Produtos.
+
+## Executando o Projeto no Docker
+
+### Pré-requisitos
+
+Certifique-se de que você tenha o Docker instalado em seu sistema. Caso contrário, você pode baixá-lo e instalá-lo a partir do [site oficial do Docker](https://www.docker.com/get-started).
+
+### Passo 1: Build da Imagem Docker
+
+No diretório raiz do projeto, execute o seguinte comando para criar uma imagem Docker do projeto. Certifique-se de que esteja no mesmo diretório onde se encontra o arquivo `Dockerfile`.
+
+```shell
+docker build . -t api-thex-products --no-cache
+```
+
+### Passo 2: Executando o Contêiner Docker
+
+Agora que a imagem Docker foi criada, você pode executar o projeto em um contêiner Docker com o seguinte comando:
+
+```shell
+docker run --name api-thex-products \
+--network local \
+-p 3002:3002 \
+-e API_ADDRESS="0.0.0.0:3002" \
+-d api-thex-products
+```
+
+### Passo 3: Acessando a Aplicação
+
+Após a execução bem-sucedida do contêiner, você pode acessar a aplicação em http://localhost:3002. Certifique-se de que a porta 3002 esteja disponível em seu sistema.
+
+### Encerrando o Contêiner
+
+Para parar e remover o contêiner em execução, você pode usar o seguinte comando:
+
+```shell
+docker stop api-thex-products
+docker rm api-thex-products
+```
+
+Isso encerrará o contêiner e o removerá do sistema.
+
+```shell
+docker tag api-thex-products miguelsmuller/api-thex-products:1.0.0
+```
+
+
+

@@ -11,10 +11,7 @@ type Config struct {
 }
 
 func LoadEnvVars() (*Config, error) {
-	err := godotenv.Load("../settings/.env")
-    if err != nil {
-        return nil, err
-    }
+	godotenv.Load("../settings/.env")
 
     cfg := &Config{
         APIAddress:  os.Getenv("API_ADDRESS"),
