@@ -24,6 +24,24 @@ help:
 	{ lastLine = $$0 }' $(MAKEFILE_LIST)
 	printf "\n"
 
-## setup
-setup:
-	echo "SETUP"
+## build-image
+build-image:
+	docker build . -t miguelsmuller/api-thex-products
+
+## run-image
+run-image:
+	docker run --name api-thex-products \
+			--network local \
+			-p 3002:3002 \
+			-e API_ADDRESS="0.0.0.0:3002" \
+			-d -it \
+			miguelsmuller/api-thex-products
+
+## stop-image
+stop-image:
+	docker container stop api-thex-products && \
+	docker rm -f api-thex-products
+
+## publish-image
+publish-image:
+	docker tag api-thex-products miguelsmuller/api-thex-products:1.0.0
