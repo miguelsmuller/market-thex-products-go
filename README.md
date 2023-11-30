@@ -24,9 +24,14 @@ Este projeto utiliza várias dependências e bibliotecas para garantir seu funci
 
 2. Abra o projeto em seu ambiente de desenvolvimento Go preferido (por exemplo, Visual Studio Code, GoLand).
 
+   2.1 gopls - Go language server
+      - `go install -v golang.org/x/tools/gopls@latest`
+      - https://github.com/golang/tools/tree/master/gopls
+
 3. Certifique-se de ter um banco de dados SQLite configurado e ajuste as configurações de conexão em `config.go` para corresponder à configuração do seu banco de dados.
 
 4. Execute o projeto e você pode acessar a API de Produtos através da URL: `http://localhost:8081/api/products`.
+
 
 ## Live Reload
 
@@ -36,11 +41,10 @@ Para facilitar o desenvolvimento, recomendamos a utilização do Live Reload. Pa
 go install github.com/cosmtrek/air@latest
 ```
 
-
 Depois de instalar o air, você pode iniciar o Live Reload com o seguinte comando:
 
 ```bash
-air
+~/go/bin/air -c .air.toml
 ```
 
 Isso permitirá que as alterações no código sejam automaticamente refletidas no seu servidor em execução.

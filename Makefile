@@ -48,35 +48,35 @@ run-dinamic:
 
 
 ## Build a Docker image for the application
-docker-build:
-	docker build . -t $(DOCKER_IMAGE_NAME)
+build-image:
+	docker build . -t $(DOCKER_IMAGE_NAME):$(GIT_HASH)
 
 
 ## Start the application in a Docker container
-docker-run:
+run-image:
 	docker run --name $(DOCKER_CONTAINER_NAME) \
-			-p 3002:3002 \
-			-e API_ADDRESS="0.0.0.0:3002" \
-			-d -it \
-			$(DOCKER_IMAGE_NAME)
+		-p 3002:3002 \
+		-e API_ADDRESS="0.0.0.0:3002" \
+		-d -it \
+		$(DOCKER_IMAGE_NAME)
 
 
 ## Stop the running Docker container
-docker-stop:
+stop-image:
 	docker container stop $(DOCKER_CONTAINER_NAME)
 
 
 ## Remove the running Docker container
-docker-remove:
+remove-image:
 	docker container stop $(DOCKER_CONTAINER_NAME) && \
 	docker rm -f $(DOCKER_CONTAINER_NAME)
-
+	
 
 ## Creates a tag for the Docker image for versioning purposes
-docker-tag:
+tag-image:
 	docker tag $(DOCKER_IMAGE_NAME) $(DOCKER_IMAGE_NAME):$(GIT_HASH)
 
 
 ## Publishes the Docker image to a registry (https://hub.docker.com/)
-docker-push:
+publish-image:
 	docker push $(DOCKER_IMAGE_NAME):$(GIT_HASH)
